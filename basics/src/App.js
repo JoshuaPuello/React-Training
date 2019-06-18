@@ -7,8 +7,8 @@ import Person from './Person/Person'
 class App extends Component {
     state = {
         persons: [
-            { name: "Joshua", age: "23" },
-            { name: "Abigail", age: "07" },
+            { name: "Max", age: "23" },
+            { name: "Charles", age: "07" },
         ]
     }
 
@@ -16,7 +16,7 @@ class App extends Component {
         this.setState({
             persons: [
                 { name: newName, age: "25" },
-                { name: "Puello Abigail", age: "09" },
+                { name: "Winehouse Abigail", age: "09" },
             ]
         })
     }
@@ -44,12 +44,12 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React app!</h1>
                 <p>This really works!</p>
-                <button style = { style } onClick = { this.switchNameHandler.bind(this, "Puello Padilla Joshua") }>
+                <button style = { style } onClick = { this.switchNameHandler.bind(this, "Smith Charles Max") }>
                     Switch data
                 </button>
                 <Person
                     changed = { this.nameChangedHandler }
-                    click = {this.switchNameHandler.bind(this, "Just Joshua!")}
+                    click = {this.switchNameHandler.bind(this, "Just Max!")}
                     name = { this.state.persons[0].name }
                     age = { this.state.persons[0].age }
                 >My hobby is: Read books!</Person>
