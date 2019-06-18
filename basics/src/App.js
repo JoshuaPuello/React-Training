@@ -2,40 +2,18 @@ import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person'
 
-// Base-class component
-
 class App extends Component {
     state = {
         persons: [
-            { name: "Max", age: "23" },
-            { name: "Charles", age: "07" },
-            { name: "Fighter", age: "32" },
+            { id: "fskd1", name: "Max", age: "23" },
+            { id: "fskd2", name: "Charles", age: "07" },
+            { id: "fskd3", name: "Fighter", age: "32" },
         ],
         showPersons: false
     }
 
-    switchNameHandler = (newName) => {
-        this.setState({
-            persons: [
-                { name: newName, age: "25" },
-                { name: "Winehouse Abigail", age: "09" },
-                { name: "Foo", age: "32" },
-            ]
-        })
-    }
-
-    nameChangedHandler = (event) => {
-        this.setState({
-            persons: [
-                { name: event.target.value, age: "25" },
-                { name: "Abigail", age: "07" },
-                { name: "Fighter", age: "32" },
-            ]
-        })
-    }
-
     deletePersonHandler = (personIndex) => {
-        const persons = this.state.persons;
+        const persons = [...this.state.persons];
         persons.splice(personIndex, 1);
         this.setState({ persons: persons });
     }
@@ -68,6 +46,7 @@ class App extends Component {
                                 click = { () => this.deletePersonHandler(index) }
                                 name = { person.name }
                                 age = { person.age }
+                                key = { person.id }
                             />
                         })
                     }
@@ -91,39 +70,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
-const App = props => {
-
-    const [personsState, setPersonsState] = useState(
-        {
-            persons: [
-                { name: "Joshua", age: "23" },
-                { name: "Abigail", age: "07" },
-            ],
-            otherState: "some other value"
-        }
-    );
-
-    const switchNameHandler = () => {
-        setPersonsState({
-            persons: [
-                { name: "Puello Joshua", age: "23" },
-                { name: "Puello Abigail", age: "07" },
-            ],
-            otherState: personsState.otherState
-        });
-    }
-
-    return (
-        <div className="App">
-            <Person name={personsState.persons[0].name} age={personsState.persons[0].age}>My hobby is: Read books!</Person>
-            <Person name={personsState.persons[1].name} age={personsState.persons[1].age} />
-            <button onClick={switchNameHandler}>Switch data</button>
-        </div>
-    );
-
-}
-
-export default App;
-*/
