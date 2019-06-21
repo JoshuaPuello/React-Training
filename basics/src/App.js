@@ -55,6 +55,7 @@ class App extends Component {
         }
 
         let persons = null;
+        let classes = [];
 
         if (this.state.showPersons) {
             persons = (
@@ -76,10 +77,13 @@ class App extends Component {
             style.backgroundColor = 'red';
         }
 
+        if (this.state.persons.length <= 2) classes.push('red');
+        if (this.state.persons.length <= 1) classes.push('bold');
+
         return (
             <div className = "App">
                 <h1>Hi, I'm a React app!</h1>
-                <p>This really works!</p>
+                <p className = { classes.join(' ') }>This really works!</p>
                 <button style = { style } onClick = { this.togglePersonHandler }>
                     Switch data
                 </button>
