@@ -6,6 +6,11 @@ import withClass from '../../../hoc/withClass';
 import classes from './Person.css';
 
 class Person extends Component {
+
+    componentDidMount() {
+        this.inputElement.focus();
+    }
+
     render() {
         return (
             <Aux>
@@ -14,7 +19,12 @@ class Person extends Component {
                 </p>
                 <p>{ this.props.children }</p>
 
-                <input type = "text" onChange = { this.props.changed } value = { this.props.name }/>
+                <input
+                    type = "text"
+                    onChange = { this.props.changed }
+                    value = { this.props.name }
+                    ref = { (inputEl) => {this.inputElement = inputEl} }
+                />
             </Aux>
         )
     }
