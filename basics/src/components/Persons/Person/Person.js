@@ -7,8 +7,14 @@ import classes from './Person.css';
 
 class Person extends Component {
 
+    constructor(props) {
+        super(props);
+        this.inputElement = React.createRef();
+
+    }
+
     componentDidMount() {
-        this.inputElement.focus();
+        this.inputElement.current.focus();
     }
 
     render() {
@@ -23,7 +29,7 @@ class Person extends Component {
                     type = "text"
                     onChange = { this.props.changed }
                     value = { this.props.name }
-                    ref = { (inputEl) => {this.inputElement = inputEl} }
+                    ref = { this.inputElement }
                 />
             </Aux>
         )
